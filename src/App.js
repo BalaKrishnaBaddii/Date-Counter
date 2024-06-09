@@ -1,25 +1,69 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./app.css";
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <DateCounter />
     </div>
   );
 }
 
-export default App;
+function DateCounter() {
+  const [range, setRange] = useState(1);
+  const [currentValue, setCurrentvalue] = useState(0);
+
+  const date = new Date("June 9 2024");
+  date.setDate(date.getDate() + currentValue);
+
+  function handleScroll(event) {
+    setRange(parseFloat(event.target.value));
+  }
+
+  function handleClick(v) {
+    if (range >= 1) {
+      v
+        ? setCurrentvalue(currentValue + range)
+        : setCurrentvalue(currentValue - range);
+    }
+  }
+
+  function handleChange(event) {
+    setCurrentvalue(parseFloat(event.target.value));
+  }
+  return (
+    <main>
+      <div className="scroller">
+        <input
+          className="scroll"
+          type="range"
+          min={1}
+          max={10}
+          onChange={handleScroll}
+          defaultValue={1}
+        />
+        <label>{range}</label>
+      </div>
+      <div className="value-box">
+        <button onClick={() => handleClick()}>-</button>
+        <input value={currentValue} type="text" onChange={handleChange} />
+        <button onClick={() => handleClick(true)}>+</button>
+      </div>
+      <div className="date-box">
+        <p>
+          {currentValue === 0
+            ? "Today"
+            : currentValue > 0
+            ? `${currentValue} days from`
+            : `${Math.abs(currentValue)} days ago was `}{" "}
+          {date.toDateString()}
+        </p>
+      </div>
+      <div className="reset">
+        <button className="reset-button" onClick={() => setCurrentvalue(0)}>
+          Reset
+        </button>
+      </div>
+    </main>
+  );
+}

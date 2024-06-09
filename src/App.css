@@ -1,38 +1,55 @@
-.App {
-  text-align: center;
+body {
+  padding: 0px;
+  margin: 0px;
+  font-family: sans-serif;
+  font-style: oblique;
+  box-sizing: border-box;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+main {
+  border: 2px solid aqua;
+  width: 50%;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding: 25%;
 }
 
-.App-link {
-  color: #61dafb;
+.scroller,
+.value-box,
+.date-box,
+.reset {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-around;
+  margin: 1rem 0px 1rem 0px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.scroll {
+  width: 45vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.scroller label {
+  font-style: oblique;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+button {
+  background-color: aliceblue;
+  text-align: center;
+  justify-content: center;
+  padding: 0.8rem;
+}
+
+.reset-button {
+  font-size: 1.5rem;
+  padding: 0.5em;
+  background-color: honeydew;
+  border: 2px dotted gold;
+}
+
+.reset-button:hover {
+  cursor: pointer;
 }

@@ -29,7 +29,9 @@ function DateCounter() {
   }
 
   function handleChange(event) {
-    setCurrentvalue(parseFloat(event.target.value));
+    setCurrentvalue(
+      parseFloat(event.target.value !== "" ? event.target.value : 0)
+    );
   }
   return (
     <main>
@@ -46,7 +48,13 @@ function DateCounter() {
       </div>
       <div className="value-box">
         <button onClick={() => handleClick()}>-</button>
-        <input value={currentValue} type="text" onChange={handleChange} />
+        <input
+          className="count-box"
+          value={currentValue}
+          type="text"
+          onChange={handleChange}
+          defaultValue={0}
+        />
         <button onClick={() => handleClick(true)}>+</button>
       </div>
       <div className="date-box">
